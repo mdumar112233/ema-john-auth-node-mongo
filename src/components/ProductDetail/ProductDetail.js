@@ -8,7 +8,7 @@ const ProductDetail = () => {
     const [product, setProduct] = useState({});
     console.log(product);
     useEffect(() => {
-        fetch('http://localhost:4000/product/'+productKey)
+        fetch('https://evening-badlands-00150.herokuapp.com/product/'+productKey)
         .then(res => res.json())
         .then(data => setProduct(data))
     }, [productKey]);
