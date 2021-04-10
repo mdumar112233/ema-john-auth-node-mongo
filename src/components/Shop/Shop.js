@@ -10,13 +10,17 @@ const Shop = () => {
     // const first10 = fakeData.slice(0,10);
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
-
+    const [search, setSearch] = useState('');
+    console.log(search);
+    const handleSearch = (e) => {
+        setSearch(e.target.value);
+    }
 
     useEffect(() => {
-        fetch('https://evening-badlands-00150.herokuapp.com/products')
+        fetch('https://evening-badlands-00150.herokuapp.com/products?search='+search)
         .then(res => res.json())
         .then(data => setProducts(data))
-    },[])
+    },[search])
     
     useEffect(()=>{
         const savedCart = getDatabaseCart();
@@ -52,6 +56,7 @@ const Shop = () => {
     return (
         <div className="twin-container">
             <div className="product-container">
+                <input onBlur={handleSearch} className='product-search' type="text"/>
                 {
                     products.map(pd => <Product 
                         key={pd.key}
