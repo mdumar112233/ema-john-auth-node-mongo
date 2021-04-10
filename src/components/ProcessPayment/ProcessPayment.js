@@ -6,10 +6,10 @@ import SimpleCardElement from './SimpleCardElement';
 
 const stripePromise = loadStripe('pk_test_51IeAn5F8Tt6idX1YNJvJVrIfNjU3XrD6sHsAdImNegbHw4cdba24Ps7RmrvZ0hrI3uVrTVxzgyhI6SxkDlPcs66700yOJaMdXL');
 
-const ProcessPayment = () => {
+const ProcessPayment = ({handlePayment}) => {
     return (
             <Elements stripe={stripePromise}>
-                <SimpleCardElement></SimpleCardElement>
+                <SimpleCardElement handlePayment={handlePayment}></SimpleCardElement>
                 {/* <SplitCardForm></SplitCardForm> */}
             </Elements>
     );
